@@ -1,0 +1,111 @@
+.card .card-body{
+    padding: 0px !important;
+}
+thead{
+    background-color: lightcyan;
+}
+.table tr:first-child, .table th:first-child, .table td:first-child{
+    padding-left: 15px !important;
+}
+select{
+    padding: 5px 10px;
+    border-radius: 25px;
+    width: 180px;
+}
+.card-title{
+    width: 100%;
+}
+.card-title p{
+    margin: 0 10px 0 0;
+}
+.card .card-header{
+    padding: 0.50rem 1.50rem !important;
+}
+.main {
+    width: 50%;
+    margin: 50px auto;
+}
+.has-search .form-control {
+    padding-left: 2.375rem !important;
+    padding: 7px 0 7px 2.375rem !important;
+    border-radius: 25px;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 3rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.Filter{
+    margin-left: 10px;
+    border:  1px solid #009EF7;
+    border-radius: 25px;
+    padding: 4px 15px;
+}
+.setting{
+    margin-left: 10px;
+}
+.plus{
+    font-size: 25px;
+    font-weight: 100;
+    margin-right: 10px;
+}
+.add_order{
+    display: flex ;
+    align-items: center;
+    padding: 0px 15px !important;
+    border-radius: 25px;
+}
+.setting-Mobile{
+    display: none;
+    margin-left: 10px;
+}
+.MuiPaper-root {
+    width: 100%;
+}
+.Filter_btn {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+.Filter_btn .btn1{
+    padding: 5px 15px !important;
+    border-radius: 25px !important;
+    border: 1px solid gray !important;
+    
+}
+.pro_ship{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lightblue;
+    padding: 10px;
+}
+.icon_dot{
+    background-color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+}
+.Filter_btn .btn2{
+    padding: 5px 15px !important;
+    border-radius: 25px !important;
+}
+
+@media only screen and (max-width: 600px) {
+   .filter_search{
+    margin-top: 10px;
+    margin-bottom: 25px;
+   }
+   .setting-Mobile{
+    display: block;
+}
+.setting{
+    display: none;
+}
+  }

@@ -2,6 +2,13 @@
 import React, {FC} from 'react'
 import {KTSVG} from '../../../helpers'
 import {ChatInner} from '../../chat/ChatInner'
+import { AiOutlineClose } from 'react-icons/ai';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Checkbox, FormControlLabel, FormGroup, Radio, RadioGroup } from '@mui/material';
 
 const DrawerMessenger: FC = () => (
   <div
@@ -19,37 +26,81 @@ const DrawerMessenger: FC = () => (
     <div className='card w-100 rounded-0' id='kt_drawer_chat_messenger'>
       <div className='card-header pe-5' id='kt_drawer_chat_messenger_header'>
         <div className='card-title'>
-          <div className='d-flex justify-content-center flex-column me-3'>
+          <div className='d-flex justify-content-between align-items-center me-3 pt-4' style={{width:"100%"}}>
             <a href='#' className='fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1'>
-              Brian Cox
+              Filter Your Order 
             </a>
-
-            <div className='mb-0 lh-1'>
-              <span className='badge badge-success badge-circle w-10px h-10px me-1'></span>
-              <span className='fs-7 fw-bold text-gray-400'>Active</span>
+            <div className="close text-primary" id='kt_drawer_chat_close'>
+              <AiOutlineClose />
             </div>
           </div>
         </div>
-
-        <div className='card-toolbar'>
-          <div className='me-2'>
-            <button
-              className='btn btn-sm btn-icon btn-active-light-primary'
-              data-kt-menu-trigger='click'
-              data-kt-menu-placement='bottom-end'
-              data-kt-menu-flip='top-end'
-            >
-              <i className='bi bi-three-dots fs-3'></i>
-            </button>
-          </div>
-
-          <div className='btn btn-sm btn-icon btn-active-light-primary' id='kt_drawer_chat_close'>
-            <KTSVG path='/media/icons/duotune/arrows/arr061.svg' className='svg-icon-2' />
-          </div>
-        </div>
+        <div className='card-toolbar' style={{width:"100%"}}>
+        <Accordion expanded={true}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Fulfillment status</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <FormGroup>
+  <FormControlLabel control={<Checkbox />} label="Fulfilled" />
+  <FormControlLabel control={<Checkbox />} label="Unfulfilled" />
+  <FormControlLabel control={<Checkbox />} label="Partially fulfilled" />
+  <FormControlLabel control={<Checkbox />} label="Canceled" />
+</FormGroup>
+        </AccordionDetails>
+      </Accordion >
+      <Accordion expanded={true}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Typography>Payment Status</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <FormGroup>
+  <FormControlLabel control={<Checkbox />} label="Paid" />
+  <FormControlLabel control={<Checkbox />} label="unpaid" />
+  <FormControlLabel control={<Checkbox />} label="Refunded" />
+</FormGroup>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion expanded={true}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3a-content"
+          id="panel3a-header"
+        >
+          <Typography>Date</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <RadioGroup
+    aria-labelledby="demo-radio-buttons-group-label"
+    defaultValue="female"
+    name="radio-buttons-group"
+  >
+    <FormControlLabel value="female" control={<Radio />} label="Custom Dates" />
+    <FormControlLabel value="male" control={<Radio />} label="Last 24 Hours" />
+  </RadioGroup>
+        </AccordionDetails>
+      </Accordion>
+      <hr />
+      <div className='d-flex justify-content-between' style={{width:"100%"}}>
+        <h5>No Filters applied</h5>
+        <span className='text-secondary'>Clear Selection</span>
+      </div>
+      <hr />
+      <div className="Filter_btn mb-5">
+        <button className='btn btn1 border-1'>Save This View</button>
+        <button className='btn btn2 ms-3 bg-primary text-white border-0'>Done</button>
       </div>
 
-      <ChatInner isDrawer={true} />
+        </div>
+      </div>
     </div>
   </div>
 )
