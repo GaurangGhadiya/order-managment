@@ -1,6 +1,8 @@
 import React from 'react'
 import { BiMessageAlt } from 'react-icons/bi';
-import { BsPencilFill, BsThreeDots } from 'react-icons/bs';
+import { RiRefund2Fill } from 'react-icons/ri';
+import { TbFileInvoice } from 'react-icons/tb';
+import { BsPencil, BsThreeDots } from 'react-icons/bs';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -28,15 +30,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+  return ['Add a note(Your customers wont see this)', 'Jun 9,2022 3:53 P.M.', 'Jun 9,2022 3:53 P.M.', 'Jun 9,2022 3:53 P.M.', 'Jun 9,2022 3:53 P.M.', 'Jun 9,2022 3:53 P.M.'];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`;
+      return <><textarea style={{width:"100%"}}></textarea></>;
     case 1:
       return 'An ad group contains one or more ads which target a shared set of keywords.';
     case 2:
@@ -44,6 +44,13 @@ function getStepContent(step) {
               and learn how to enhance your ads using features like ad extensions.
               If you run into any problems with your ads, find out how to tell if
               they're running and how to resolve approval issues.`;
+              case 3:
+                return 'An ad group contains one or more ads which target a shared set of keywords.';
+                case 4:
+                  return 'An ad group contains one or more ads which target a shared set of keywords.';
+                  case 5:
+                    return 'An ad group contains one or more ads which target a shared set of keywords.';
+                
     default:
       return 'Unknown step';
   }
@@ -70,24 +77,26 @@ const OrderDetails = () => {
 
   return (
     <>
-    <div className='d-flex justify-content-between align-items-center flex-wrap'>
+    <nav class="navbar sticky-top navbar-light bg-light">
+  <div  style={{width:"100%"}}>
+  <div className='d-flex justify-content-between align-items-center flex-wrap' style={{width:"100%"}}>
       <div className="">
-        
        <span>
        Order > Order #10416
        </span>
-      <div className='d-flex align-items-center'>
+      <div className='d-flex align-items-center space_between'>
       <h1 className='display-6'>
         Order #10416
        </h1>
-       <a className="badge badge-light-primary fs-8 fw-bolder">
+       <div>
+       <a className="mx-4 box_paid ">
                 Paid
               </a>
-              <a className="badge badge-light-primary fs-8 fw-bolder">
+              <a className=" box_paid">
                 Fulfilled
               </a>
+       </div>
       </div>
-      <span className='text-secondary'>Place on Jun 4,2022, 4:58 PM</span>
       </div>
      <div className="">
      <select className='text-primary' name="" id="">
@@ -96,6 +105,10 @@ const OrderDetails = () => {
                 </select>
      </div>
     </div>
+  </div>
+</nav>
+<span className='light_Gray ps-4 pb-2'>Place on Jun 4,2022, 4:58 PM</span>
+   
     <div className="row">
       <div className="col-lg-8">
         <div className="card">
@@ -107,11 +120,11 @@ const OrderDetails = () => {
             <span className='icon_dot'><BsThreeDots /></span>
           </div>
           <table  className='m-4'>
-            <tr>
+            <tr className='d-flex align=items-center justify-content-between flex-wrap'>
               <td><img src="https://picsum.photos/50/50" alt="" style={{borderRadius:"50%"}}/></td>
               <td>
                 <h6  className='m-0'>Addiz Metty T-shirt</h6>
-                <span className='text-secondary'>Sizes:(M | L | Xl )-SET</span>
+                <span className='light_Gray'>Sizes:(M | L | Xl )-SET</span>
               </td>
               <td><p className='m-0'>Fulfilled</p><span className='text-primary'>D22DD22E</span></td>
               <td><p>₹3,580.00</p></td>
@@ -126,11 +139,11 @@ const OrderDetails = () => {
             <h5>
               Payment Info
             </h5>
-            <span className='text-secondary'>
+            <span className='light_Gray'>
               Paid with Razorpay
             </span>
             </div>
-            <p className='text-primary'>create invioce</p>
+            <p className='text-primary'><TbFileInvoice /> create invioce</p>
           </div>
             <hr />
           <div className="card-body me-5">
@@ -150,9 +163,9 @@ const OrderDetails = () => {
             </div>
           </div>
             <hr />
-            <div className='px-5 py-2 pb-4 d-flex justify-content-between align-items-center flex-wrap'> <span>Payment ID #pay_D1561DE</span><span className='text-primary'>Issue Refund</span></div>
+            <div className='px-5 py-2 pb-4 d-flex justify-content-between align-items-center flex-wrap'> <span className='light_Gray'>Payment ID #pay_D1561DE</span><span className='text-primary'><RiRefund2Fill /> Issue Refund</span></div>
         </div>
-        <div className="card mt-5">
+        <div className="card mt-5 margin_bottom">
         <div className="card-title p-4 pb-0">
           <h1>Order Activity</h1>
         </div>
@@ -167,21 +180,6 @@ const OrderDetails = () => {
               <Typography>{getStepContent(index)}</Typography>
               <div className={classes.actionsContainer}>
                 <div>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    className={classes.button}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                  </Button>
                 </div>
               </div>
             </StepContent>
@@ -201,30 +199,31 @@ const OrderDetails = () => {
         </div>
 
       </div>
-      <div className="col-lg-4">
+      <div className="col-lg-4 margin_bottom">
         <div className="card">
       <div className="card-title p-4 m-0  d-flex justify-content-between">
             <h2 className='m-0'>Order Info </h2>
-            <span className='text-primary'><BsPencilFill /></span>
+            <span className='text-primary'><BsPencil /></span>
           </div>
-          <div className="card-body p-3 m-3">
+          <hr />
+          <div className="card-body ms-5 p-3 m-3">
             <h5 className='text-primary'>hermas maradona <BiMessageAlt /></h5>
             <p>hermasmar@gmail.com</p>
             <hr />
-            <h5>SHIPPING ADDRESS</h5>
+            <h5 className='pt-2'>SHIPPING ADDRESS</h5>
             <p>hermas maradona</p>
             <p>1/256,South koira,surat,gujarat,india</p>
             <p>999999555</p>
-            <p className='text-primary'>View Map</p>
+            <p className='text-primary mb-2'>View Map</p>
             <hr />
-            <h5>BILLING ADDRESS</h5>
-            <p>Same as shipping address</p>
+            <h5 className='pt-2'>BILLING ADDRESS</h5>
+            <p className='pb-2'>Same as shipping address</p>
             <hr />
-            <h5>DELIVERY METHOD</h5>
+            <h5 className='pt-2'>DELIVERY METHOD</h5>
             <p>Shipping</p>
-            <p>1-2 Business Days</p>
+            <p className='pb-2'>1-2 Business Days</p>
             <hr />
-            <h5>SHOP NAME</h5>
+            <h5 className='pt-2'>SHOP NAME</h5>
             <p>Santhome</p>
           </div>
 

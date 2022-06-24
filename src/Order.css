@@ -1,3 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+h1,h2,h3,h4,h5,h6{
+    margin-bottom: 0;
+}
+.light_Gray{
+    color: #b0aeae;
+}.MuiSvgIcon-root path{
+    fill: #009EF7;
+}
 .card .card-body{
     padding: 0px !important;
 }
@@ -11,6 +24,17 @@ select{
     padding: 5px 10px;
     border-radius: 25px;
     width: 180px;
+    font-size: 14px;
+    border-color: #009EF7;
+}
+.box_paid{
+    color: #009EF7;
+    border: 1px solid #051621;
+    padding: 2px 12px;
+    background-color: white;
+}
+select:focus-visible {
+ border: none !important;
 }
 .card-title{
     width: 100%;
@@ -29,6 +53,11 @@ select{
     padding-left: 2.375rem !important;
     padding: 7px 0 7px 2.375rem !important;
     border-radius: 25px;
+    border-color: #009EF7;
+    color: #009EF7;
+}
+.has-search .form-control::placeholder   {
+    color: #009EF7;
 }
 
 .has-search .form-control-feedback {
@@ -40,16 +69,16 @@ select{
     line-height: 3rem;
     text-align: center;
     pointer-events: none;
-    color: #aaa;
+    color: #009EF7;
 }
 .Filter{
-    margin-left: 10px;
+    margin-left: 20px;
     border:  1px solid #009EF7;
     border-radius: 25px;
-    padding: 4px 15px;
+    padding: 5px 15px;
 }
 .setting{
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .plus{
     font-size: 25px;
@@ -77,14 +106,14 @@ select{
 .Filter_btn .btn1{
     padding: 5px 15px !important;
     border-radius: 25px !important;
-    border: 1px solid gray !important;
+    border: 1px solid #b0aeae !important;
     
 }
 .pro_ship{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: lightblue;
+    background-color: #e1f5fb;
     padding: 10px;
 }
 .icon_dot{
@@ -95,6 +124,25 @@ select{
 .Filter_btn .btn2{
     padding: 5px 15px !important;
     border-radius: 25px !important;
+}
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root.Mui-expanded{
+    margin: 0 !important;
+}
+hr{
+    width: 100%;
+}
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+    top: -10px !important;
+    color: #009EF7 !important;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
+    border-radius: 0;
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: 6px !important;
+}
+.margin_bottom{
+    margin-bottom: 50px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -108,4 +156,12 @@ select{
 .setting{
     display: none;
 }
+.space_between{
+    justify-content: space-between;
+    width: 115%;
+}
+  }
+
+  .sticky-top{
+    top: 65px !important;
   }

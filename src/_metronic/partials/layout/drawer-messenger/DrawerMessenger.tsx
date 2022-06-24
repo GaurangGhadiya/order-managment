@@ -9,8 +9,14 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Checkbox, FormControlLabel, FormGroup, Radio, RadioGroup } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers-pro';
+import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
+import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+import Box from '@mui/material/Box';
 
-const DrawerMessenger: FC = () => (
+
+const DrawerMessenger: FC = (props) => (
   <div
     id='kt_drawer_chat'
     className='bg-white'
@@ -30,13 +36,14 @@ const DrawerMessenger: FC = () => (
             <a href='#' className='fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1'>
               Filter Your Order 
             </a>
-            <div className="close text-primary" id='kt_drawer_chat_close'>
+            <div className="close text-primary cursor-pointer" id='kt_drawer_chat_close'>
               <AiOutlineClose />
             </div>
           </div>
         </div>
+          <hr />
         <div className='card-toolbar' style={{width:"100%"}}>
-        <Accordion expanded={true}>
+        <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -53,7 +60,7 @@ const DrawerMessenger: FC = () => (
 </FormGroup>
         </AccordionDetails>
       </Accordion >
-      <Accordion expanded={true}>
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel2a-content"
@@ -69,7 +76,7 @@ const DrawerMessenger: FC = () => (
 </FormGroup>
         </AccordionDetails>
       </Accordion>
-      <Accordion expanded={true}>
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3a-content"
@@ -84,6 +91,23 @@ const DrawerMessenger: FC = () => (
     name="radio-buttons-group"
   >
     <FormControlLabel value="female" control={<Radio />} label="Custom Dates" />
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <div>
+        <DateRangePicker
+          calendars={1}
+          value={props.value}
+          onChange={(newValue) => {
+            props.setValue(newValue);
+          }}set
+          renderInput={(startProps, endProps) => (
+            <React.Fragment>
+              <TextField {...startProps} />
+              <TextField {...endProps} />
+            </React.Fragment>
+          )}
+        />
+      </div>
+    </LocalizationProvider>
     <FormControlLabel value="male" control={<Radio />} label="Last 24 Hours" />
   </RadioGroup>
         </AccordionDetails>
@@ -91,11 +115,11 @@ const DrawerMessenger: FC = () => (
       <hr />
       <div className='d-flex justify-content-between' style={{width:"100%"}}>
         <h5>No Filters applied</h5>
-        <span className='text-secondary'>Clear Selection</span>
+        <span className='light_Gray'>Clear Selection</span>
       </div>
       <hr />
       <div className="Filter_btn mb-5">
-        <button className='btn btn1 border-1'>Save This View</button>
+        <button className='btn btn1 light_Gray'>Save This View</button>
         <button className='btn btn2 ms-3 bg-primary text-white border-0'>Done</button>
       </div>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BootstrapTable from "react-bootstrap-table-next";
 import { makeStyles } from "@material-ui/core/styles";
 import "../../../src/Order.css"
@@ -41,7 +41,15 @@ const data = [
     order: "#11111",
     Date: "Jun 4,2022",
     Customer: "test test",
-    Payment: "pay",
+    Payment: "Paid",
+    Fulfillment: "Unfulfilled",
+    Total: "₹3,651.00"
+  },
+  {
+    order: "#11111",
+    Date: "Jun 4,2022",
+    Customer: "test test",
+    Payment: "Unpaid",
     Fulfillment: "Fulfilled",
     Total: "₹3,651.00"
   },
@@ -49,33 +57,56 @@ const data = [
     order: "#11111",
     Date: "Jun 4,2022",
     Customer: "test test",
-    Payment: "pay",
-    Fulfillment: "Fulfilled",
+    Payment: "Paid",
+    Fulfillment: "Unfulfilled",
     Total: "₹3,651.00"
   },
   {
     order: "#11111",
     Date: "Jun 4,2022",
     Customer: "test test",
-    Payment: "pay",
-    Fulfillment: "Fulfilled",
-    Total: "₹3,651.00"
-  },
-  {
-    order: "#11111",
-    Date: "Jun 4,2022",
-    Customer: "test test",
-    Payment: "pay",
+    Payment: "Unpaid",
     Fulfillment: "Fulfilled",
     Total: "₹3,651.00"
   }
 ]
 const Orders = () => {
+  const [check,setCheck] =useState(false)
+  console.log("check",check);
 
   const classes = useStyles();
 
   const columns = [
     {
+      dataField: "order",
+      // filter: textFilter(),
+      text: <>
+      <div className='form-check form-check-sm form-check-custom form-check-solid' onClick={() => setCheck(!check)}>
+      <input
+        className='form-check-input'
+        type='checkbox'
+        value='1'
+        data-kt-check='true'
+        data-kt-check-target='.widget-9-check'
+      />
+    </div>
+    </>,
+      sort: true,
+      formatter: (cell, row) => {
+
+        return (
+          <>
+          <div className='form-check form-check-sm form-check-custom form-check-solid'>
+                    <input className='form-check-input widget-9-check' type='checkbox' value='1' 
+                    // checked={check}
+                    />
+                  </div>
+
+          </>
+
+        );
+      },
+    },{
       dataField: "order",
       // filter: textFilter(),
       text: "order",
@@ -85,7 +116,7 @@ const Orders = () => {
         return (
           <>
             <div className="d-flex">
-              <a className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
+              <a className="text-dark font-weight-bolder  mb-1 font-size-lg">
                 {row?.order}
               </a>
             </div>
@@ -105,7 +136,7 @@ const Orders = () => {
         return (
           <>
             <div className="d-flex">
-              <a className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
+              <a className="text-dark font-weight-bolder  mb-1 font-size-lg">
                 {row?.Date}
               </a>
             </div>
@@ -123,7 +154,7 @@ const Orders = () => {
         return (
           <>
             <div className="d-flex">
-              <a className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
+              <a className="text-dark font-weight-bolder  mb-1 font-size-lg">
                 {row?.Customer}
               </a>
             </div>
@@ -141,9 +172,12 @@ const Orders = () => {
         return (
           <>
             <div className="d-flex">
-              <a className="badge badge-light-primary fs-8 fw-bolder">
+              {row?.Payment === "Paid" ? <a className="badge badge-primary fs-8 fw-bolder">
+                {row?.Payment}
+              </a> :<a className="badge badge-danger fs-8 fw-bolder">
                 {row?.Payment}
               </a>
+            }
             </div>
 
           </>
@@ -160,9 +194,12 @@ const Orders = () => {
         return (
           <>
             <div className="d-flex">
-              <a className="badge badge-light-primary fs-8 fw-bolder">
+              {row?.Fulfillment === "Fulfilled" ? <a className="badge badge-primary fs-8 fw-bolder">
+                {row?.Payment}
+              </a> :<a className="badge badge-danger fs-8 fw-bolder">
                 {row?.Fulfillment}
               </a>
+            }
             </div>
 
           </>
@@ -179,7 +216,7 @@ const Orders = () => {
         return (
           <>
             <div className="d-flex">
-              <a className="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">
+              <a className="text-dark font-weight-bolder  mb-1 font-size-lg">
                 {row?.Total}
               </a>
             </div>
@@ -189,16 +226,17 @@ const Orders = () => {
       },
     },
   ];
-  const selectRow = {
-    mode: 'checkbox',
-    clickToSelect: true
-  };
+  // const selectRow = {
+  //   mode: 'checkbox',
+  //   clickToSelect: false
+  // };
   return (
     <>
-      <div className="d-flex justify-content-between flex-wrap">
+     <nav class="navbar sticky-top navbar-light bg-light">
+  <div className="d-flex justify-content-between flex-wrap" style={{width:"100%"}}>
       <div className="">
                <h1 className='display-6'>Orders</h1>
-               <p>415 Orders | ₹361,877 revenue <span className='text-primary'>See sales analytics</span></p>
+               
       </div>
       <div className="">
       <a
@@ -208,7 +246,9 @@ const Orders = () => {
                                 <span className='plus'>+</span> Add New Order
                             </a>
       </div>
-      </div>
+  </div>
+</nav>
+      <p>415 Orders | ₹361,877 revenue <span className='text-primary'>See sales analytics</span></p>
       <div
         className="content  d-flex flex-column flex-column-fluid  h-100"
         id="kt_content"
@@ -235,7 +275,7 @@ const Orders = () => {
                   <BiFilterAlt /> Filter
                 </div>
                 <div className="setting text-primary">
-                  <FiSettings />
+                  <FiSettings size={20} />
                 </div>
               </div>
 
@@ -254,7 +294,7 @@ const Orders = () => {
                 keyField="id"
                 data={data}
                 columns={columns}
-                selectRow={selectRow}
+                // selectRow={selectRow}
               // noDataIndication={() => <NoDataTable />}
               ></BootstrapTable>
               <div className="d-flex justify-content-between  pt-10">
