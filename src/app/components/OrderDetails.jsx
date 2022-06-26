@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { BiMessageAlt } from 'react-icons/bi';
 import { RiRefund2Fill } from 'react-icons/ri';
 import { TbFileInvoice } from 'react-icons/tb';
@@ -82,6 +82,7 @@ function getStepContent(step) {
 const OrderDetails = () => {
   const steps = getSteps();
   const [activeStep, setActiveStep] = React.useState(0);
+  const [scrollSize, setscrollSize] = useState(0)
 
   const classes = useStyles();
 
@@ -97,6 +98,17 @@ const OrderDetails = () => {
     setActiveStep(0);
   }
 
+
+  window.addEventListener('scroll', () => setscrollSize(window.scrollY))
+
+  // useEffect(() => {
+    console.log('scrollSize', scrollSize)
+    
+  // }, [scrollSize])
+  
+
+  
+
   return (
     <>
     <nav class="navbar sticky-top navbar-light bg-light ">
@@ -104,9 +116,9 @@ const OrderDetails = () => {
   <div className='d-flex justify-content-between align-items-center flex-wrap' style={{width:"100%"}}>
       <div className="">
        <span className='ps-2'>
-       Order > Order #10416
+       Order &gt; Order #10416
        </span>
-       <div className='d-flex align-items-center space_between px-1'>
+       {scrollSize < 40 ? <div className='d-flex align-items-center space_between px-1'>
       <h1 className='display-6'>
         Order #10416
        </h1>
@@ -118,7 +130,7 @@ const OrderDetails = () => {
                 Fulfilled
               </a>
        </div>
-      </div>
+      </div> : <></>}
       </div>
      <div className="">
      <select className='text-primary' name="" id="">
