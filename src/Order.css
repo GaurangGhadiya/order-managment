@@ -164,4 +164,5 @@ hr{
 
   .sticky-top{
     top: 65px !important;
+    z-index: 109 !important;
   }
