@@ -14,10 +14,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers-pro';
 import { AdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
 import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import Box from '@mui/material/Box';
-
-
-const DrawerMessenger: FC = (props:any) => (
-  <div
+ 
+const DrawerMessenger: FC = (props:any) =>{
+  const [value, setValue] = React.useState<any>([null, null]);
+  return (
+    <div
     id='kt_drawer_chat'
     className='bg-white'
     data-kt-drawer='true'
@@ -95,9 +96,9 @@ const DrawerMessenger: FC = (props:any) => (
       <div>
         <DateRangePicker
           calendars={1}
-          value={[null ,null]}
+          value={value}
           onChange={(newValue) => {
-            props.setValue(newValue);
+            setValue(newValue);
           }}
           renderInput={(startProps, endProps) => (
             <React.Fragment>
@@ -127,6 +128,7 @@ const DrawerMessenger: FC = (props:any) => (
       </div>
     </div>
   </div>
-)
+  )
+}
 
 export {DrawerMessenger}
