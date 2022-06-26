@@ -30,7 +30,29 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function getSteps() {
-  return ['Add a note(Your customers wont see this)', 'Jun 9,2022 3:53 P.M.', 'Jun 9,2022 3:53 P.M.', 'Jun 9,2022 3:53 P.M.', 'Jun 9,2022 3:53 P.M.', 'Jun 9,2022 3:53 P.M.'];
+  return [{
+    title:'Add a note(Your customers wont see this)',
+    dis:"An ad group contains one or more ads which target a shared set of keywords."
+  }, {
+    title:"Jun 9,2022 3:53 P.M.",
+    dis:"order pripaid"
+  },
+  {
+    title:"Jun 9,2022 3:53 P.M.",
+    dis:"order packing"
+  },
+  {
+    title:"Jun 9,2022 3:53 P.M.",
+    dis:"order Tracking"
+  },
+  {
+    title:"Jun 9,2022 3:53 P.M.",
+    dis:"order deliver"
+  },
+  {
+    title:"Jun 9,2022 3:53 P.M.",
+    dis:"order Reaturn"
+  },];
 }
 
 function getStepContent(step) {
@@ -77,14 +99,14 @@ const OrderDetails = () => {
 
   return (
     <>
-    <nav class="navbar sticky-top navbar-light bg-light">
+    <nav class="navbar sticky-top navbar-light bg-light ">
   <div  style={{width:"100%"}}>
   <div className='d-flex justify-content-between align-items-center flex-wrap' style={{width:"100%"}}>
       <div className="">
-       <span>
+       <span className='ps-2'>
        Order > Order #10416
        </span>
-      <div className='d-flex align-items-center space_between'>
+       <div className='d-flex align-items-center space_between px-1'>
       <h1 className='display-6'>
         Order #10416
        </h1>
@@ -107,9 +129,10 @@ const OrderDetails = () => {
     </div>
   </div>
 </nav>
-<span className='light_Gray ps-4 pb-2'>Place on Jun 4,2022, 4:58 PM</span>
+
+<span className='light_Gray ps-1 ms-1'>Place on Jun 4,2022, 4:58 PM</span>
    
-    <div className="row">
+    <div className="row mt-5">
       <div className="col-lg-8">
         <div className="card">
           <div className="card-title p-4 m-0">
@@ -175,7 +198,7 @@ const OrderDetails = () => {
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((label, index) => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel>{label?.title} <h6>{label?.dis}</h6></StepLabel>
             <StepContent>
               <Typography>{getStepContent(index)}</Typography>
               <div className={classes.actionsContainer}>
