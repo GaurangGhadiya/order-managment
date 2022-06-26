@@ -166,3 +166,7 @@ hr{
     top: 65px !important;
     z-index: 109 !important;
   }
+  .display-none{
+    behavior: smooth;
+    display: none !important;
+  }

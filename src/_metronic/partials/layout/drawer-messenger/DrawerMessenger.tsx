@@ -16,7 +16,7 @@ import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
 import Box from '@mui/material/Box';
 
 
-const DrawerMessenger: FC = (props) => (
+const DrawerMessenger: FC = (props:any) => (
   <div
     id='kt_drawer_chat'
     className='bg-white'
@@ -95,10 +95,10 @@ const DrawerMessenger: FC = (props) => (
       <div>
         <DateRangePicker
           calendars={1}
-          value={props.value}
+          value={[null ,null]}
           onChange={(newValue) => {
             props.setValue(newValue);
-          }}set
+          }}
           renderInput={(startProps, endProps) => (
             <React.Fragment>
               <TextField {...startProps} />

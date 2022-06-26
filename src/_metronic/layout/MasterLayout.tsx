@@ -13,7 +13,7 @@ import {DrawerMessenger, ActivityDrawer, Main, InviteUsers, UpgradePlan} from '.
 import {MenuComponent} from '../assets/ts/components'
 
 const MasterLayout = () => {
-  const [value, setValue] = React.useState([null, null]);
+  const [value, setValue] = React.useState<any>([null, null]);
   const location = useLocation()
   useEffect(() => {
     setTimeout(() => {
@@ -49,7 +49,10 @@ const MasterLayout = () => {
       {/* begin:: Drawers */}
       <ActivityDrawer />
       {/* <RightToolbar /> */}
-      <DrawerMessenger value={value} setValue={setValue}/>
+      <DrawerMessenger 
+      // value={value} 
+      // setValue={setValue}
+      />
       {/* end:: Drawers */}
 
       {/* begin:: Modals */}

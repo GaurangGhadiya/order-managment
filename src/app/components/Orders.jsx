@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "../../../src/Order.css"
 import { BiFilterAlt } from 'react-icons/bi';
 import { FiSettings } from 'react-icons/fi';
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const data = [
   {
+    id:0,
     order: "#11111",
     Date: "Jun 4,2022",
     Customer: "test test",
@@ -46,6 +48,7 @@ const data = [
     Total: "₹3,651.00"
   },
   {
+    id:1,
     order: "#11111",
     Date: "Jun 4,2022",
     Customer: "test test",
@@ -54,6 +57,7 @@ const data = [
     Total: "₹3,651.00"
   },
   {
+    id:2,
     order: "#11111",
     Date: "Jun 4,2022",
     Customer: "test test",
@@ -62,6 +66,7 @@ const data = [
     Total: "₹3,651.00"
   },
   {
+    id:3,
     order: "#11111",
     Date: "Jun 4,2022",
     Customer: "test test",
@@ -77,36 +82,7 @@ const Orders = () => {
   const classes = useStyles();
 
   const columns = [
-    {
-      dataField: "order",
-      // filter: textFilter(),
-      text: <>
-      <div className='form-check form-check-sm form-check-custom form-check-solid' onClick={() => setCheck(!check)}>
-      <input
-        className='form-check-input'
-        type='checkbox'
-        value='1'
-        data-kt-check='true'
-        data-kt-check-target='.widget-9-check'
-      />
-    </div>
-    </>,
-      sort: true,
-      formatter: (cell, row) => {
-
-        return (
-          <>
-          <div className='form-check form-check-sm form-check-custom form-check-solid'>
-                    <input className='form-check-input widget-9-check' type='checkbox' value='1' 
-                    // checked={check}
-                    />
-                  </div>
-
-          </>
-
-        );
-      },
-    },{
+  {
       dataField: "order",
       // filter: textFilter(),
       text: "order",
@@ -230,6 +206,16 @@ const Orders = () => {
   //   mode: 'checkbox',
   //   clickToSelect: false
   // };
+  const selectRow = {
+    mode: "checkbox",
+    clickToSelect: false,
+    classes: "selection-row"
+  };
+const rowEvents = {
+  onClick: (e, row, rowIndex) => {
+    console.log({ row, rowIndex });
+  }
+};
   return (
     <>
      <nav class="navbar sticky-top navbar-light bg-light">
@@ -294,7 +280,8 @@ const Orders = () => {
                 keyField="id"
                 data={data}
                 columns={columns}
-                // selectRow={selectRow}
+                selectRow={selectRow}
+                rowEvents={rowEvents}
               // noDataIndication={() => <NoDataTable />}
               ></BootstrapTable>
               <div className="d-flex justify-content-between  pt-10">

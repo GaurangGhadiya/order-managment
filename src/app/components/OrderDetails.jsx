@@ -111,14 +111,15 @@ const OrderDetails = () => {
 
   return (
     <>
-    <nav class="navbar sticky-top navbar-light bg-light ">
+    <nav class="navbar navbar-light bg-light ">
   <div  style={{width:"100%"}}>
   <div className='d-flex justify-content-between align-items-center flex-wrap' style={{width:"100%"}}>
       <div className="">
        <span className='ps-2'>
        Order &gt; Order #10416
        </span>
-       {scrollSize < 40 ? <div className='d-flex align-items-center space_between px-1'>
+       {/* {scrollSize < 40 ? */}
+        <div className='d-flex align-items-center space_between px-1'>
       <h1 className='display-6'>
         Order #10416
        </h1>
@@ -130,7 +131,8 @@ const OrderDetails = () => {
                 Fulfilled
               </a>
        </div>
-      </div> : <></>}
+      </div> 
+      {/* : <></>} */}
       </div>
      <div className="">
      <select className='text-primary' name="" id="">
